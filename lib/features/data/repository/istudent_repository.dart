@@ -5,9 +5,7 @@ import 'package:students_api_project/packages/dio_package/dio.dart';
 final studentRepository = StudentRepositoryImp(
     iStudentDataSource: StudentDataSourceImp(httpClient: MyDio.httpClient));
 
-abstract class IStudentRepository {
-  Future<List<StudentModel>> getAllStudents();
-}
+abstract class IStudentRepository extends IStudentDataSource {}
 
 class StudentRepositoryImp extends IStudentRepository {
   final IStudentDataSource iStudentDataSource;
@@ -16,4 +14,9 @@ class StudentRepositoryImp extends IStudentRepository {
   @override
   Future<List<StudentModel>> getAllStudents() =>
       iStudentDataSource.getAllStudents();
+
+  @override
+  Future<void> addStudent(
+          String firstName, String lastName, String course, int score) =>
+      iStudentDataSource.addStudent(firstName, lastName, course, score);
 }
