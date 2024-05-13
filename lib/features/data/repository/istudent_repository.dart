@@ -5,7 +5,11 @@ import 'package:students_api_project/packages/dio_package/dio.dart';
 final studentRepository = StudentRepositoryImp(
     iStudentDataSource: StudentDataSourceImp(httpClient: MyDio.httpClient));
 
-abstract class IStudentRepository extends IStudentDataSource {}
+abstract class IStudentRepository {
+  Future<List<StudentModel>> getAllStudents();
+  Future<void> addStudent(
+      String firstName, String lastName, String course, int score);
+}
 
 class StudentRepositoryImp extends IStudentRepository {
   final IStudentDataSource iStudentDataSource;
