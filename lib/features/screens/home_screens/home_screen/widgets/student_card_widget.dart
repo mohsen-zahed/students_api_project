@@ -40,6 +40,29 @@ class StudentCardWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Container(
+            width: mediaQueries.getWidthMediaQuery(context, 0.15),
+            height: mediaQueries.getHeightMediaQuery(context, 0.15),
+            padding:
+                EdgeInsets.all(mediaQueries.getHeightMediaQuery(context, 0.01)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: themeChecker.isLightMode(context)
+                  ? colors.kPurpleColorShade50
+                  : colors.kWhiteColor,
+            ),
+            child: Center(
+              child: Text(
+                student.firstName.substring(0, 1),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: themeChecker.isLightMode(context)
+                          ? colors.kPurpleColor
+                          : colors.kBlackColor,
+                    ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
           NameBoxWithNameAndCourse(student: student),
           ScoreAndDateWidgets(student: student),
         ],

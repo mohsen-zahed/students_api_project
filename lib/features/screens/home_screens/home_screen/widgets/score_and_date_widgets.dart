@@ -10,20 +10,22 @@ class ScoreAndDateWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          student.score.toString(),
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        const SizedBox(height: 5),
-        Text(
-          student.createdAt,
-          style: Theme.of(context).textTheme.labelSmall,
-        ),
-      ],
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            student.score.toString(),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 5),
+          Text(
+            student.createdAt,
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -19,7 +19,6 @@ final class HomeFailed extends HomeState {
 
 final class HomeSuccess extends HomeState {
   final List<StudentModel> students;
-
   const HomeSuccess({required this.students});
   @override
   List<Object> get props => [students];

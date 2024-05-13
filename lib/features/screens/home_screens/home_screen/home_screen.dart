@@ -6,9 +6,14 @@ import 'package:students_api_project/features/screens/home_screens/home_screen/b
 import 'package:students_api_project/features/screens/home_screens/home_screen/widgets/student_card_widget.dart';
 import 'package:students_api_project/features/screens/home_screens/home_screen/widgets/student_info_dialog.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,4 +72,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
