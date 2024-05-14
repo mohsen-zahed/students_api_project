@@ -7,7 +7,6 @@ import 'package:students_api_project/config/constants/colors.dart';
 import 'package:students_api_project/features/data/repository/istudent_repository.dart';
 import 'package:students_api_project/features/screens/home_screens/add_student_screen/bloc/add_student_bloc.dart';
 import 'package:students_api_project/features/screens/home_screens/add_student_screen/widgets/custom_text_field_widget.dart';
-import 'package:students_api_project/features/screens/home_screens/home_screen/bloc/home_bloc.dart';
 import 'package:students_api_project/utils/media_queries/media_queries.dart';
 
 class AddStudentScreen extends StatefulWidget {
@@ -96,7 +95,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
               const SizedBox(height: 50),
               BlocBuilder<AddStudentBloc, AddStudentState>(
                 builder: (context, state) {
-                  context.read<HomeBloc>().add(HomeRefresh());
                   return SizedBox(
                     width: mediaQueries.getWidthMediaQuery(context, 0.9),
                     height: mediaQueries.getHeightMediaQuery(context, 0.15),
