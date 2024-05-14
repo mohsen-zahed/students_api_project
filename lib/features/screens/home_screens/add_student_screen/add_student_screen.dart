@@ -50,7 +50,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Student added successfully'),
             ));
-            BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
             Navigator.pop(context);
           } else if (state is AddStudentFailed) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -97,6 +96,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
               const SizedBox(height: 50),
               BlocBuilder<AddStudentBloc, AddStudentState>(
                 builder: (context, state) {
+                  context.read<HomeBloc>().add(HomeRefresh());
                   return SizedBox(
                     width: mediaQueries.getWidthMediaQuery(context, 0.9),
                     height: mediaQueries.getHeightMediaQuery(context, 0.15),
