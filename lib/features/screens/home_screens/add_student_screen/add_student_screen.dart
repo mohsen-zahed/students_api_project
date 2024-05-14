@@ -7,6 +7,7 @@ import 'package:students_api_project/config/constants/colors.dart';
 import 'package:students_api_project/features/data/repository/istudent_repository.dart';
 import 'package:students_api_project/features/screens/home_screens/add_student_screen/bloc/add_student_bloc.dart';
 import 'package:students_api_project/features/screens/home_screens/add_student_screen/widgets/custom_text_field_widget.dart';
+import 'package:students_api_project/features/screens/home_screens/home_screen/bloc/home_bloc.dart';
 import 'package:students_api_project/utils/media_queries/media_queries.dart';
 
 class AddStudentScreen extends StatefulWidget {
@@ -49,6 +50,8 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Student added successfully'),
             ));
+            BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
+            Navigator.pop(context);
           } else if (state is AddStudentFailed) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.exception.errorMessage),

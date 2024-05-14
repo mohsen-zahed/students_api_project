@@ -15,7 +15,7 @@ class StudentDataSourceImp extends IStudentDataSource {
   Future<List<StudentModel>> getAllStudents() async {
     final response = await httpClient.get('experts/student');
     List<StudentModel> students = [];
-    for (var element in (response.data as List)) {
+    for (var element in (response.data as List).reversed) {
       students.add(StudentModel.fromJson(element));
     }
     return students;

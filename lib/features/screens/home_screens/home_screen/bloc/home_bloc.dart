@@ -12,7 +12,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IStudentRepository iStudentRepository;
   HomeBloc(this.iStudentRepository) : super(HomeLoading()) {
     on<HomeEvent>((event, emit) async {
-      if (event is HomeStarted) {
+      if (event is HomeStarted || event is HomeRefresh) {
         try {
           emit(HomeLoading());
           final result = await iStudentRepository.getAllStudents();

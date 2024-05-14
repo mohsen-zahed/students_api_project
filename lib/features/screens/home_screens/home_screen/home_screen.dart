@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:students_api_project/features/data/repository/istudent_repository.dart';
@@ -12,6 +13,8 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
+final GlobalKey<ScaffoldMessengerState> scaffoldKey = GlobalKey();
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -37,27 +40,39 @@ class _HomeScreenState extends State<HomeScreen> {
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeSuccess) {
-              return ListView.builder(
-                itemCount: state.students.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) =>
-                            StudentInfoDialog(student: state.students[index]),
-                      );
-                    },
-                    child: StudentCardWidget(
-                      student: state.students[index],
-                      index: index,
-                    ),
-                  );
+              return RefreshIndicator(
+                onRefresh: () async {
+                  BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
                 },
+                child: ListView.builder(
+                  itemCount: state.students.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) =>
+                              StudentInfoDialog(student: state.students[index]),
+                        );
+                      },
+                      child: StudentCardWidget(
+                        student: state.students[index],
+                        index: index,
+                      ),
+                    );
+                  },
+                ),
               );
             } else if (state is HomeLoading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CupertinoActivityIndicator(),
+                    SizedBox(height: 10),
+                    Text('Loading...'),
+                  ],
+                ),
               );
             } else if (state is HomeFailed) {
               return Center(
