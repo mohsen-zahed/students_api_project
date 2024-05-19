@@ -7,6 +7,7 @@ import 'package:students_api_project/utils/media_queries/media_queries.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
+  static const String id = '/search_screen';
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
