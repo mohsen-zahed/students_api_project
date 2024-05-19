@@ -18,7 +18,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: mediaQueries.getWidthMediaQuery(context, 0.05),
+        horizontal: MyMediaQueries.instance.getWidthMediaQuery(context, 0.05),
       ),
       child: TextField(
         controller: textEditingController,

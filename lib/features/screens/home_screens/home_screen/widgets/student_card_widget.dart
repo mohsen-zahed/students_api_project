@@ -20,44 +20,37 @@ class StudentCardWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.fromLTRB(
-        mediaQueries.getWidthMediaQuery(context, 0.03),
-        index == 0 ? mediaQueries.getHeightMediaQuery(context, 0.02) : 0,
-        mediaQueries.getWidthMediaQuery(context, 0.03),
-        mediaQueries.getWidthMediaQuery(context, 0.02),
+        MyMediaQueries.instance.getWidthMediaQuery(context, 0.03),
+        index == 0 ? MyMediaQueries.instance.getHeightMediaQuery(context, 0.02) : 0,
+        MyMediaQueries.instance.getWidthMediaQuery(context, 0.03),
+        MyMediaQueries.instance.getWidthMediaQuery(context, 0.02),
       ),
       padding: EdgeInsets.fromLTRB(
-        mediaQueries.getWidthMediaQuery(context, 0.01),
-        mediaQueries.getHeightMediaQuery(context, 0.01),
-        mediaQueries.getHeightMediaQuery(context, 0.025),
-        mediaQueries.getHeightMediaQuery(context, 0.01),
+        MyMediaQueries.instance.getWidthMediaQuery(context, 0.01),
+        MyMediaQueries.instance.getHeightMediaQuery(context, 0.01),
+        MyMediaQueries.instance.getHeightMediaQuery(context, 0.025),
+        MyMediaQueries.instance.getHeightMediaQuery(context, 0.01),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: themeChecker.isLightMode(context)
-            ? colors.kWhiteColor
-            : colors.kGreyColorShade100,
+        color: themeChecker.isLightMode(context) ? colors.kWhiteColor : colors.kGreyColorShade100,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: mediaQueries.getWidthMediaQuery(context, 0.15),
-            height: mediaQueries.getHeightMediaQuery(context, 0.15),
-            padding:
-                EdgeInsets.all(mediaQueries.getHeightMediaQuery(context, 0.01)),
+            width: MyMediaQueries.instance.getWidthMediaQuery(context, 0.15),
+            height: MyMediaQueries.instance.getHeightMediaQuery(context, 0.15),
+            padding: EdgeInsets.all(MyMediaQueries.instance.getHeightMediaQuery(context, 0.01)),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: themeChecker.isLightMode(context)
-                  ? colors.kPurpleColorShade50
-                  : colors.kWhiteColor,
+              color: themeChecker.isLightMode(context) ? colors.kPurpleColorShade50 : colors.kWhiteColor,
             ),
             child: Center(
               child: Text(
                 student.firstName.substring(0, 1),
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: themeChecker.isLightMode(context)
-                          ? colors.kPurpleColor
-                          : colors.kBlackColor,
+                      color: themeChecker.isLightMode(context) ? colors.kPurpleColor : colors.kBlackColor,
                     ),
               ),
             ),

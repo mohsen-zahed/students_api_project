@@ -6,6 +6,7 @@ import 'package:students_api_project/features/screens/home_screens/add_student_s
 import 'package:students_api_project/features/screens/home_screens/home_screen/bloc/home_bloc.dart';
 import 'package:students_api_project/features/screens/home_screens/home_screen/widgets/student_card_widget.dart';
 import 'package:students_api_project/features/screens/home_screens/home_screen/widgets/student_info_dialog.dart';
+import 'package:students_api_project/features/screens/home_screens/search_screen/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen()));
+            },
+            icon: const Icon(Icons.search),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -51,8 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         showDialog(
                           context: context,
-                          builder: (context) =>
-                              StudentInfoDialog(student: state.students[index]),
+                          builder: (context) => StudentInfoDialog(student: state.students[index]),
                         );
                       },
                       child: StudentCardWidget(

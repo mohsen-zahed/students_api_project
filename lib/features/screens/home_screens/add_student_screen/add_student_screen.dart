@@ -18,14 +18,10 @@ class AddStudentScreen extends StatefulWidget {
 }
 
 class _AddStudentScreenState extends State<AddStudentScreen> {
-  final TextEditingController _firstNameController =
-      TextEditingController(text: 'Amir Mohsen');
-  final TextEditingController _lastNameController =
-      TextEditingController(text: 'Zahed');
-  final TextEditingController _courseController =
-      TextEditingController(text: 'Flutter');
-  final TextEditingController _scoreController =
-      TextEditingController(text: '1000');
+  final TextEditingController _firstNameController = TextEditingController(text: 'Amir Mohsen');
+  final TextEditingController _lastNameController = TextEditingController(text: 'Zahed');
+  final TextEditingController _courseController = TextEditingController(text: 'Flutter');
+  final TextEditingController _scoreController = TextEditingController(text: '1000');
 
   StreamSubscription? streamSubscription;
 
@@ -96,12 +92,11 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
               BlocBuilder<AddStudentBloc, AddStudentState>(
                 builder: (context, state) {
                   return SizedBox(
-                    width: mediaQueries.getWidthMediaQuery(context, 0.9),
-                    height: mediaQueries.getHeightMediaQuery(context, 0.15),
+                    width: MyMediaQueries.instance.getWidthMediaQuery(context, 0.9),
+                    height: MyMediaQueries.instance.getHeightMediaQuery(context, 0.15),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                         backgroundColor: colors.kBlackColor,
                         foregroundColor: colors.kWhiteColor,
                       ),
@@ -115,9 +110,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                           ),
                         );
                       },
-                      child: (state is AddStudentLoading)
-                          ? const Center(child: CupertinoActivityIndicator())
-                          : const Text('Submit Student'),
+                      child: (state is AddStudentLoading) ? const Center(child: CupertinoActivityIndicator()) : const Text('Submit Student'),
                     ),
                   );
                 },

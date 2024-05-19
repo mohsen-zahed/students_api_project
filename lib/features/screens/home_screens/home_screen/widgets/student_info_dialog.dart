@@ -18,8 +18,8 @@ class StudentInfoDialog extends StatelessWidget {
     return AlertDialog(
       backgroundColor: colors.kPurpleColorShade50,
       content: SizedBox(
-        width: mediaQueries.getWidthMediaQuery(context),
-        height: mediaQueries.getHeightMediaQuery(context, 0.45),
+        width: MyMediaQueries.instance.getWidthMediaQuery(context),
+        height: MyMediaQueries.instance.getHeightMediaQuery(context, 0.45),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

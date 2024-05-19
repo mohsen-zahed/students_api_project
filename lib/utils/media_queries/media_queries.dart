@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MediaQueries {
+class MyMediaQueries {
+  static MyMediaQueries? _myMediaQueries;
+  MyMediaQueries._();
+  static MyMediaQueries get instance {
+    _myMediaQueries ??= MyMediaQueries._();
+    return _myMediaQueries!;
+  }
+
   double getWidthMediaQuery(BuildContext context, [double width = 1]) {
     return MediaQuery.of(context).size.width * width;
   }
@@ -9,5 +16,3 @@ class MediaQueries {
     return MediaQuery.of(context).size.width * height;
   }
 }
-
-MediaQueries mediaQueries = MediaQueries();

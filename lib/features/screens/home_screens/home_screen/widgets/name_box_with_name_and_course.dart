@@ -25,8 +25,8 @@ class NameBoxWithNameAndCourse extends StatelessWidget {
           const SizedBox(height: 2),
           Container(
             padding: EdgeInsets.symmetric(
-              horizontal: mediaQueries.getWidthMediaQuery(context, 0.01),
-              vertical: mediaQueries.getHeightMediaQuery(context, 0.01),
+              horizontal: MyMediaQueries.instance.getWidthMediaQuery(context, 0.01),
+              vertical: MyMediaQueries.instance.getHeightMediaQuery(context, 0.01),
             ),
             decoration: BoxDecoration(
               color: colors.kGreyColorShade100,
